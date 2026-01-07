@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SevaSetu - Upload Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f1f5f9;
+            min-height: 100vh;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/0b/Indian_Government_logo.png'); /* Example watermark */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 250px;
+            opacity: 0.05;
+        }
+        .overlay {
+            position: absolute;
+            top:0; left:0;
+            width:100%;
+            height:100%;
+            background-color: rgba(255,255,255,0.95);
+        }
+    </style>
+</head>
+<body class="relative">
+
+<div class="overlay flex flex-col justify-center items-center p-6">
+
+    <!-- Header -->
+    <header class="text-center mb-10">
+        <h1 class="text-4xl font-bold text-blue-900 mb-2">Welcome to SevaSetu</h1>
+        <p class="text-lg text-gray-700 max-w-xl mx-auto">
+            Upload your documents and let our AI automatically extract information to fill government forms securely and accurately.
+        </p>
+    </header>
+
+    <!-- Upload Form -->
+    <div class="bg-white rounded-2xl shadow-lg p-10 w-full max-w-lg flex flex-col items-center">
+        <i class="fas fa-file-upload text-5xl text-blue-700 mb-6"></i>
+        <form action="/upload" method="post" enctype="multipart/form-data" class="w-full flex flex-col items-center gap-4">
+            <input type="file" name="pdf_file" accept=".pdf" class="border border-gray-300 rounded-lg px-4 py-2 w-full" required>
+            <button type="submit" class="bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition w-full">
+                Upload PDF
+            </button>
+        </form>
+        {% if error %}
+            <p class="text-red-600 mt-4">{{ error }}</p>
+        {% endif %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-12 text-gray-500 text-sm">
+        © 2026 SevaSetu - Government Services Simplified
+    </footer>
+</div>
+
+</body>
+</html>
